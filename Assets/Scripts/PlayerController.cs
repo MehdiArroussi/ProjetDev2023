@@ -26,26 +26,31 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        rbody.velocity = new Vector2(movement.x*speed,rbody.velocity.y);
-        animator.SetBool("Running",movement.x != 0);
-        if(movement.x != 0){
-            spr.flipX = movement.x < 0;
-        }
+    {   
+        // appelle la fonction pour  déplacer le personnage
         OnMove();
     }
 
-    void OnJump(){
-        if(grounded){
+    void OnMove(){
+        // Deplacement du personnage de gauche à droite
+        movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+
+        // permet de deplacer le personnage de gauche a droite en fonction de la vitesse
+        rbody.velocity = new Vector2(movement.x*speed,rbody.velocity.y);
+        //declanche l'animation de course
+        animator.SetBool("Running",movement.x != 0);
+        // condition pour que le personnage regarde dans la direction de son déplacement
+        if(movement.x != 0){
+            spr.flipX = movement.x < 0;
+        }
+        // condition pour que si espace est appuyé, le personnage saute
+        if(Input.GetButtonDown("Jump")){
+            if(grounded){
             animator.SetBool("InTheAir",true);
             rbody.AddForce(new Vector2(0,10),ForceMode2D.Impulse);
             grounded = false;
-        }
-        
-    }
-
-    void OnMove(){
-        movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+                }
+            }
     }
 
     void OnCollisionEnter2D(Collision2D collision){

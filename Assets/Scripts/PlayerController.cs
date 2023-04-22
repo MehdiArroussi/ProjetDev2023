@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
+    public TextMesh textMesh;
+    public float pourcentagederecul = 0;
     Rigidbody2D rbody = null;
     Vector2 movement = Vector2.zero;
 

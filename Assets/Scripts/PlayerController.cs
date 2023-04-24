@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     bool grounded = false;
 
     Animator animator = null;
+    public KeyCode crouchKey = KeyCode.LeftControl;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
         rbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -49,6 +52,11 @@ public class PlayerController : MonoBehaviour
             grounded = false;
                 }
             }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(GameObject.Find("Player")&& Input.GetKeyDown(crouchKey)){
+            SendMessage("est sur la plateforme");
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision){

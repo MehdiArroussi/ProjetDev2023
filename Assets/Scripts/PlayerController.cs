@@ -54,8 +54,8 @@ public class PlayerController : MonoBehaviour
             }
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        if(GameObject.Find("Player")&& Input.GetKeyDown(crouchKey)){
-            SendMessage("est sur la plateforme");
+        if(Input.GetKeyDown(crouchKey)){
+            GameObject.Find("Player").SendMessage("est sur la plateforme");
         }
     }
 

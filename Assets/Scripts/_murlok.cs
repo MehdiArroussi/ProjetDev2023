@@ -1,39 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class _murlok : MonoBehaviour
 {
+    public TextMesh textMesh;
+    public float pourcentagederecul = 0;
+    Rigidbody2D rbody = null;
+    Vector2 movement = Vector2.zero;
 
-public PlayerController pc;
-public Rigidbody2D rb;
+    SpriteRenderer spr = null;
 
+    public float speed = 2.0f;
+    bool grounded = false;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    Animator animator = null;
+    public KeyCode crouchKey = KeyCode.LeftControl;
+    // public PolygonCollider2D sword;
 
 
 
@@ -41,12 +23,58 @@ public Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        pc = GetComponent<PlayerController>();
+        rbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spr = GetComponent<SpriteRenderer>();
+
     }
+
     // Update is called once per frame
     void Update()
-    {
+    {   
+        // appelle la fonction pour  déplacer le personnage
+        OnMove();
+    }
+
+    void OnMove(){
+        // Deplacement du personnage de gauche à droite
+        movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+
+        // permet de deplacer le personnage de gauche a droite en fonction de la vitesse
+        rbody.velocity = new Vector2(movement.x*speed,rbody.velocity.y);
+        //declanche l'animation de course
+        animator.SetBool("Running",movement.x != 0);
+        // condition pour que le personnage regarde dans la direction de son déplacement
+        if(movement.x != 0){
+            spr.flipX = movement.x < 0;
+        }
+        // condition pour que si espace est appuyé, le personnage saute
+        if(Input.GetButtonDown("Jump")){
+            if(grounded){
+            animator.SetBool("InTheAir",true);
+            rbody.AddForce(new Vector2(0,10),ForceMode2D.Impulse);
+            grounded = false;
+                }
+            }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(Input.GetKeyDown(crouchKey)){
+            GameObject.Find("Player").SendMessage("est sur la plateforme");
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision){
+        foreach(ContactPoint2D contact in collision.contacts){
+            if(contact.normal.y > 0.8f){
+                grounded = true;
+                animator.SetBool("InTheAir",false);
+            }
+        }
+    }
+    public void EnableSwordCollision() {
         
+    }
+    public void DisableSwordCollider() {
+
     }
 }

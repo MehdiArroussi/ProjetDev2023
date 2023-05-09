@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     Animator animator = null;
     public KeyCode crouchKey = KeyCode.LeftControl;
+    public KeyCode S = KeyCode.S;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour
             grounded = false;
                 }
             }
-        if (Input.GetKeyDown(crouchKey)){
+        if (Input.GetKeyDown(crouchKey) && Input.GetKey(S)){
             OnTriggerEnter2D();
         }
     }

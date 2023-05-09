@@ -52,13 +52,13 @@ public class PlayerController : MonoBehaviour
             grounded = false;
                 }
             }
-    }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(Input.GetKeyDown(crouchKey)){
-            GameObject.Find("Player").SendMessage("est sur la plateforme");
+        if (Input.GetKeyDown(crouchKey)){
+            OnTriggerEnter2D();
         }
     }
-
+    private void OnTriggerEnter2D() {
+            GameObject.Find("Player").SendMessage("est sur la plateforme");
+    }
     void OnCollisionEnter2D(Collision2D collision){
         foreach(ContactPoint2D contact in collision.contacts){
             if(contact.normal.y > 0.8f){

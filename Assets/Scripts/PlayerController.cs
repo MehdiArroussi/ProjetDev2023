@@ -3,19 +3,24 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    public TextMesh textMesh;
-    public float pourcentagederecul = 0;
+    [Header("Movement")]
     Rigidbody2D rbody = null;
     Vector2 movement = Vector2.zero;
-
-    SpriteRenderer spr = null;
-
     public float speed = 2.0f;
     bool grounded = false;
 
+
+    [Header("Animation")]
+    SpriteRenderer spr = null;
+    public LayerMask platformLayer;
+    bool isAnimationPlaying = false;
     Animator animator = null;
+
+
+    [Header("Inputs")]
     public KeyCode crouchKey = KeyCode.LeftControl;
     public KeyCode S = KeyCode.S;
+    public KeyCode A = KeyCode.A;
 
     // Start is called before the first frame update
     void Start()
@@ -53,11 +58,21 @@ public class PlayerController : MonoBehaviour
             grounded = false;
                 }
             }
-        if (Input.GetKeyDown(crouchKey) && Input.GetKey(S)){
-            OnTriggerEnter2D();
+        //if (Input.GetKeyDown(crouchKey) && Input.GetKey(S)){
+        // OnTriggerEnter2D();
+        //Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, platformLayer);
+        //foreach (Collider2D collider in colliders) {
+        // Ignore the collision between the character and the platform.
+        //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collider, true);
+        //}
+        //}
+        if (Input.GetKeyDown(KeyCode.A) && !isAnimationPlaying)
+        {
+            animator.Play("Attaque haut", 0, 0f);
+            isAnimationPlaying = true;
         }
     }
-    private void OnTriggerEnter2D() {
+        private void OnTriggerEnter2D() {
             GameObject.Find("Player").SendMessage("est sur la plateforme");
     }
     void OnCollisionEnter2D(Collision2D collision){
@@ -67,5 +82,13 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("InTheAir",false);
             }
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision) {
+    // Rétablissez la collision entre le personnage et la plateforme.
+    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision, false);
+    }
+    public void ResetAnimationState()
+    {
+        isAnimationPlaying = false;
     }
 }

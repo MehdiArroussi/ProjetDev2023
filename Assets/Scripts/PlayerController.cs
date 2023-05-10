@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
     [Header("Inputs")]
     public KeyCode crouchKey = KeyCode.LeftControl;
     public KeyCode S = KeyCode.S;
-    public KeyCode A = KeyCode.A;
+    public KeyCode attaquehaut = KeyCode.A;
+    public KeyCode attaquecoter = KeyCode.E;
 
     // Start is called before the first frame update
     void Start()
@@ -33,31 +34,35 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         // appelle la fonction pour  déplacer le personnage
         OnMove();
     }
 
-    void OnMove(){
+    void OnMove()
+    {
         // Deplacement du personnage de gauche à droite
-        movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+        movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         // permet de deplacer le personnage de gauche a droite en fonction de la vitesse
-        rbody.velocity = new Vector2(movement.x*speed,rbody.velocity.y);
+        rbody.velocity = new Vector2(movement.x * speed, rbody.velocity.y);
         //declanche l'animation de course
-        animator.SetBool("Running",movement.x != 0);
+        animator.SetBool("Running", movement.x != 0);
         // condition pour que le personnage regarde dans la direction de son déplacement
-        if(movement.x != 0){
+        if (movement.x != 0)
+        {
             spr.flipX = movement.x < 0;
         }
         // condition pour que si espace est appuyé, le personnage saute
-        if(Input.GetButtonDown("Jump")){
-            if(grounded){
-            animator.SetBool("InTheAir",true);
-            rbody.AddForce(new Vector2(0,10),ForceMode2D.Impulse);
-            grounded = false;
-                }
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (grounded)
+            {
+                animator.SetBool("InTheAir", true);
+                rbody.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
+                grounded = false;
             }
+        }
         //if (Input.GetKeyDown(crouchKey) && Input.GetKey(S)){
         // OnTriggerEnter2D();
         //Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, platformLayer);
@@ -66,26 +71,27 @@ public class PlayerController : MonoBehaviour
         //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collider, true);
         //}
         //}
-        if (Input.GetKeyDown(KeyCode.A) && !isAnimationPlaying)
+        if (Input.GetKeyDown(KeyCode.A) && !isAnimationPlaying && grounded == true)
+                {
+                    animator.Play("Attaque haut", 0, 0f);
+                    isAnimationPlaying = true;
+                }
+        if (Input.GetKeyDown(KeyCode.E) && !isAnimationPlaying && grounded == true)
+                {
+                    animator.Play("attaque left", 0, 0f);
+                    isAnimationPlaying = true;
+                }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        foreach (ContactPoint2D contact in collision.contacts)
         {
-            animator.Play("Attaque haut", 0, 0f);
-            isAnimationPlaying = true;
-        }
-    }
-        private void OnTriggerEnter2D() {
-            GameObject.Find("Player").SendMessage("est sur la plateforme");
-    }
-    void OnCollisionEnter2D(Collision2D collision){
-        foreach(ContactPoint2D contact in collision.contacts){
-            if(contact.normal.y > 0.8f){
+            if (contact.normal.y > 0.8f)
+            {
                 grounded = true;
-                animator.SetBool("InTheAir",false);
+                animator.SetBool("InTheAir", false);
             }
         }
-    }
-    private void OnTriggerExit2D(Collider2D collision) {
-    // Rétablissez la collision entre le personnage et la plateforme.
-    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision, false);
     }
     public void ResetAnimationState()
     {

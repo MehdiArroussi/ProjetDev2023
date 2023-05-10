@@ -1,5 +1,8 @@
+using System.Net.Mime;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +11,8 @@ public class PlayerController : MonoBehaviour
     Vector2 movement = Vector2.zero;
     public float speed = 2.0f;
     bool grounded = false;
+    public float HPplayer ;
+    private static List<PlayerController> allPlayers = new List<PlayerController>();
 
 
     [Header("Animation")]
@@ -15,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask platformLayer;
     bool isAnimationPlaying = false;
     Animator animator = null;
+    public Text hpjoueur ;
 
 
     [Header("Inputs")]
@@ -37,6 +43,16 @@ public class PlayerController : MonoBehaviour
     {
         // appelle la fonction pour  déplacer le personnage
         OnMove();
+        hpjoueur.text = "HP : " + HPplayer;
+    }
+
+    void Awake()
+    {
+        allPlayers.Add(this);
+    }
+    void OnDestroy()
+    {
+        allPlayers.Remove(this);
     }
 
     void OnMove()
@@ -63,26 +79,18 @@ public class PlayerController : MonoBehaviour
                 grounded = false;
             }
         }
-        //if (Input.GetKeyDown(crouchKey) && Input.GetKey(S)){
-        // OnTriggerEnter2D();
-        //Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, platformLayer);
-        //foreach (Collider2D collider in colliders) {
-        // Ignore the collision between the character and the platform.
-        //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collider, true);
-        //}
-        //}
         if (Input.GetKeyDown(KeyCode.A) && !isAnimationPlaying && grounded == true)
-                {
-                    animator.Play("Attaque haut", 0, 0f);
-                    isAnimationPlaying = true;
-                }
+        {
+            animator.Play("Attaque haut", 0, 0f);
+            isAnimationPlaying = true;
+        }
         if (Input.GetKeyDown(KeyCode.E) && !isAnimationPlaying && grounded == true)
-                {
-                    animator.Play("attaque left", 0, 0f);
-                    isAnimationPlaying = true;
-                }
+        {
+            animator.Play("attaque left", 0, 0f);
+            isAnimationPlaying = true;
+        }
     }
-    void OnCollisionEnter2D(Collision2D collision)
+ void OnCollisionEnter2D(Collision2D collision)
     {
         foreach (ContactPoint2D contact in collision.contacts)
         {
@@ -93,6 +101,19 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    public void Hit()
+{
+    Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f, platformLayer);
+    foreach (Collider2D collider in colliders)
+    {
+        // Ignore the collision between the character and the platform.
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collider, false);
+        
+    }
+    // Affichage du texte dans la console
+    Debug.Log("Le joueur a attaqué un autre joueur !");
+}
+
     public void ResetAnimationState()
     {
         isAnimationPlaying = false;

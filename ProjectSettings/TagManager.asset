@@ -5,17 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Player 1
-  - Player 2
-  - Player 3
-  - Player 4
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PlayerA
   - Water
   - UI
-  - 
+  - layer
   - 
   - 
   - 

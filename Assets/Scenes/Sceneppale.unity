@@ -190,16 +190,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5850002582162475706, guid: e4413a75724add144bc4cbc4692dc644, type: 3}
+      propertyPath: emptyObject
+      value: 
+      objectReference: {fileID: 2065033797}
     - target: {fileID: 5850002582162475710, guid: e4413a75724add144bc4cbc4692dc644, type: 3}
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
     - target: {fileID: 9131693629593626389, guid: e4413a75724add144bc4cbc4692dc644, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.007
+      value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 9131693629593626389, guid: e4413a75724add144bc4cbc4692dc644, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131693629593626390, guid: e4413a75724add144bc4cbc4692dc644, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4413a75724add144bc4cbc4692dc644, type: 3}
+--- !u!1 &144511693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9131693629593626390, guid: e4413a75724add144bc4cbc4692dc644, type: 3}
+  m_PrefabInstance: {fileID: 9131693629452924379}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &171740590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1374,11 @@ CompositeCollider2D:
       - {x: -9.9687395, y: -3}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!1 &2065033797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9131693629593626390, guid: e4413a75724add144bc4cbc4692dc644, type: 3}
+  m_PrefabInstance: {fileID: 21781224}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9131693629452924379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1428,6 +1450,14 @@ PrefabInstance:
       propertyPath: hpjoueur
       value: 
       objectReference: {fileID: 240790910}
+    - target: {fileID: 5850002582162475706, guid: e4413a75724add144bc4cbc4692dc644, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850002582162475706, guid: e4413a75724add144bc4cbc4692dc644, type: 3}
+      propertyPath: emptyObject
+      value: 
+      objectReference: {fileID: 144511693}
     - target: {fileID: 5850002582162475710, guid: e4413a75724add144bc4cbc4692dc644, type: 3}
       propertyPath: m_Name
       value: Player

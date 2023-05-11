@@ -11,6 +11,7 @@ public class PlayerController : charactee
     bool grounded = false;
     [SerializeField] LayerMask layer;
     [SerializeField] Transform checkjoueurs;
+    public GameObject emptyObject;
 
     [Header("Animation")]
     SpriteRenderer spr = null;
@@ -32,7 +33,6 @@ public class PlayerController : charactee
         rbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
-
     }
 
     // Update is called once per frame
@@ -56,7 +56,15 @@ public class PlayerController : charactee
         // condition pour que le personnage regarde dans la direction de son déplacement
         if (movement.x != 0)
         {
-            spr.flipX = movement.x < 0;
+        spr.flipX = movement.x < 0;
+        if (spr.flipX == true)
+        {
+            emptyObject.transform.position = new Vector3(-0.4f, 0.15f,0);
+        }
+        else if (spr.flipX == false)
+        {
+            emptyObject.transform.position = new Vector3(0.25f, 0.15f,0);
+        }
         }
         // condition pour que si espace est appuyé, le personnage saute
         if (Input.GetButtonDown("Jump"))
@@ -78,7 +86,7 @@ public class PlayerController : charactee
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, layer);
             foreach (Collider2D col in hitEnemies){
                 if (col.gameObject != gameObject){
-                col.GetComponent<PlayerController>().takeDomage(player.dammage);
+                col.GetComponent<PlayerController>().takeDomage(player.domage);
             }}
         }
         if (Input.GetKeyDown(KeyCode.E) && !isAnimationPlaying && grounded == true)

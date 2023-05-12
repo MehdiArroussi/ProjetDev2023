@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class charactee : MonoBehaviour
 {
+    
+    public int hitsTaken = 0;
     [System.Serializable]
 
     public class Player 
@@ -20,5 +22,5 @@ public class charactee : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
+}
 }

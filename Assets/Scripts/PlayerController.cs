@@ -12,6 +12,7 @@ public class PlayerController : charactee
     [SerializeField] LayerMask layer;
     [SerializeField] Transform checkjoueurs;
     public GameObject emptyObject;
+    public float recoilForce = 10.0f;
 
     [Header("Animation")]
     SpriteRenderer spr = null;
@@ -93,19 +94,30 @@ public class PlayerController : charactee
         {
             animator.Play("attaque left", 0, 0f);
             isAnimationPlaying = true;
-        }
-    }
- void OnCollisionEnter2D(Collision2D collision)
+
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, layer);
+            foreach (Collider2D col in hitEnemies){
+                if (col.gameObject != gameObject){
+                col.GetComponent<PlayerController>().takeDomage(player.domage);
+                       // Calcul du vecteur de recul
+            Vector2 recoilDirection = transform.position - col.transform.position;
+            recoilDirection = recoilDirection.normalized;
+
+            // Appliquer le recul au joueur attaquant
+            rbody.AddForce(recoilDirection * recoilForce, ForceMode2D.Impulse);
+                }}}}
+void OnCollisionEnter2D(Collision2D collision)
+{
+    foreach (ContactPoint2D contact in collision.contacts)
     {
-        foreach (ContactPoint2D contact in collision.contacts)
+        if (contact.normal.y > 0.8f)
         {
-            if (contact.normal.y > 0.8f)
-            {
-                grounded = true;
-                animator.SetBool("InTheAir", false);
-            }
+            grounded = true;
+            animator.SetBool("InTheAir", false);
         }
     }
+}
+
 
     public void ResetAnimationState()
     {

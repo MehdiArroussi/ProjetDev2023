@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5850002582162475705}
   - component: {fileID: 5850002582162475707}
   - component: {fileID: 5850002582162475684}
-  - component: {fileID: 5850002582162475706}
+  - component: {fileID: 76147755193922926}
   - component: {fileID: 7142102356021556318}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Player 1
   m_TagString: Player 1
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.22310665, y: 0.31242812}
   m_EdgeRadius: 0
---- !u!114 &5850002582162475706
+--- !u!114 &76147755193922926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,16 +150,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player:
     HPplayer: 10
-    dammage: 1
-  speed: 5
+    domage: 1
+  speed: 2
   layer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   checkjoueurs: {fileID: 9131693629593626389}
+  emptyObject: {fileID: 9131693629593626390}
+  recoilForce: 10
   platformLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   hpjoueur: {fileID: 0}
+  crouchKey: 306
+  S: 115
+  attaquehaut: 97
+  attaquecoter: 101
 --- !u!95 &7142102356021556318
 Animator:
   serializedVersion: 5
@@ -189,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9131693629593626389}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}

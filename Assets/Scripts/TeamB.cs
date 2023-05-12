@@ -2,14 +2,13 @@ using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : charactee
+public class TeamB : charactee
 {
     [Header("Movement")]
     Rigidbody2D rbody = null;
     Vector2 movement = Vector2.zero;
     public float speed = 2.0f;
     bool grounded = false;
-    [SerializeField] LayerMask layer;
     [SerializeField] Transform checkjoueurs;
     public GameObject emptyObject;
     public float recoilForce = 10.0f;
@@ -84,10 +83,10 @@ public class PlayerController : charactee
             animator.Play("Attaque haut", 0, 0f);
             isAnimationPlaying = true;
 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamB"));
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamA"));
             foreach (Collider2D col in hitEnemies){
                 if (col.gameObject != gameObject){
-                col.GetComponent<TeamB>().takeDomage(player.domage);
+                col.GetComponent<PlayerController>().takeDomage(player.domage);
             }}
         }
         if (Input.GetKeyDown(KeyCode.E) && !isAnimationPlaying && grounded == true)
@@ -95,10 +94,10 @@ public class PlayerController : charactee
             animator.Play("attaque left", 0, 0f);
             isAnimationPlaying = true;
 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f,LayerMask.GetMask("TeamB"));
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f,LayerMask.GetMask("TeamA"));
             foreach (Collider2D col in hitEnemies){
                 if (col.gameObject != gameObject){
-                col.GetComponent<TeamB>().takeDomage(player.domage);
+                col.GetComponent<PlayerController>().takeDomage(player.domage);
                 }}}}
 void OnCollisionEnter2D(Collision2D collision)
 {

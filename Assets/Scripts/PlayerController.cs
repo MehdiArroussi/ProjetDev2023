@@ -22,10 +22,10 @@ public class PlayerController : charactee
 
 
     [Header("Inputs")]
-    private KeyCode crouchKey = KeyCode.LeftControl;
-    private KeyCode S = KeyCode.S;
-    private KeyCode attaquehaut = KeyCode.A;
-    private KeyCode attaquecoter = KeyCode.E;
+    public KeyCode crouchKey = KeyCode.LeftControl;
+    public KeyCode S = KeyCode.S;
+    public KeyCode attaquehaut = KeyCode.A;
+    public KeyCode attaquecoter = KeyCode.E;
 
     // Start is called before the first frame update
     void Start()
@@ -59,11 +59,11 @@ public class PlayerController : charactee
         spr.flipX = movement.x < 0;
         if (spr.flipX == true)
         {
-            emptyObject.transform.position = new Vector3(-0.4f, 0.15f,0);
+            emptyObject.transform.localPosition = new Vector3(-0.4f, 0.15f,0);
         }
         else if (spr.flipX == false)
         {
-            emptyObject.transform.position = new Vector3(0.25f, 0.15f,0);
+            emptyObject.transform.localPosition = new Vector3(0.25f, 0.15f,0);
         }
         }
         // condition pour que si espace est appuyé, le personnage saute

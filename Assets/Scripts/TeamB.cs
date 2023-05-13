@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class TeamB : charactee
 {
     [Header("Movement")]
-    Rigidbody2D rbody = null;
     Vector2 movement = Vector2.zero;
     public float speed = 2.0f;
     bool grounded = false;
@@ -30,9 +29,7 @@ public class TeamB : charactee
     public KeyCode combo2 = KeyCode.LeftShift;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        rbody = GetComponent<Rigidbody2D>();
+    private void Start() {
         animator = GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
     }

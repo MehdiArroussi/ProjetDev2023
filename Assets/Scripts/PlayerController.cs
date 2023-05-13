@@ -1,11 +1,9 @@
-using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : charactee
 {
     [Header("Movement")]
-    Rigidbody2D rbody = null;
     Vector2 movement = Vector2.zero;
     public float speed = 2.0f;
     bool grounded = false;
@@ -32,7 +30,6 @@ public class PlayerController : charactee
     // Start is called before the first frame update
     void Start()
     {
-        rbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
     }
@@ -60,11 +57,11 @@ public class PlayerController : charactee
             spr.flipX = movement.x < 0;
             if (spr.flipX == true)
             {
-                emptyObject.transform.localPosition = new Vector3(-0.4f, 0.15f, 0);
+                emptyObject.transform.localPosition = new Vector2(-0.4f, 0.15f);
             }
             else if (spr.flipX == false)
             {
-                emptyObject.transform.localPosition = new Vector3(0.25f, 0.15f, 0);
+                emptyObject.transform.localPosition = new Vector2(0.25f, 0.15f);
             }
         }
         // condition pour que si espace est appuyé, le personnage saute
@@ -78,6 +75,7 @@ public class PlayerController : charactee
             }
         }
     }
+
     private void Attack()
     {
         if (Input.GetKeyDown(KeyCode.A) && !isAnimationPlaying && grounded == true)
@@ -108,7 +106,7 @@ public class PlayerController : charactee
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.R)&& Input.GetKey(KeyCode.A)&& !isAnimationPlaying && grounded == true){
+        if (Input.GetKeyDown(KeyCode.R)&& !isAnimationPlaying && grounded == true){
             animator.Play("combo final", 0, 0f);
             isAnimationPlaying = true;
 
@@ -122,6 +120,7 @@ public class PlayerController : charactee
             }
         }
     }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         foreach (ContactPoint2D contact in collision.contacts)
@@ -137,5 +136,4 @@ public class PlayerController : charactee
     {
         isAnimationPlaying = false;
     }
-
 }

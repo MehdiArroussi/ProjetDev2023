@@ -10,6 +10,7 @@ public class charactee : MonoBehaviour
     {
         public float HPplayer = 2;
         public int domage = 1;
+        public int combo = 5;
     }
     public Player player;
 
@@ -21,4 +22,12 @@ public class charactee : MonoBehaviour
             Destroy(this.gameObject);
         }
 }
+    public void takeCombo(int combo)
+    {
+        player.HPplayer -= combo;
+        if (player.HPplayer <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

@@ -19,7 +19,7 @@ public class PlayerController : charactee
     public LayerMask platformLayer;
     bool isAnimationPlaying = false;
     Animator animator = null;
-    public Text hpjoueur ;
+    public Text hpjoueur;
 
 
     [Header("Inputs")]
@@ -42,7 +42,7 @@ public class PlayerController : charactee
         // appelle la fonction pour  déplacer le personnage
         OnMove();
         Attack();
-        //hpjoueur.text = "HP : " ;
+        hpjoueur.text = "HP :" + player.HPplayer;
     }
 
     void OnMove()
@@ -57,15 +57,15 @@ public class PlayerController : charactee
         // condition pour que le personnage regarde dans la direction de son déplacement
         if (movement.x != 0)
         {
-        spr.flipX = movement.x < 0;
-        if (spr.flipX == true)
-        {
-            emptyObject.transform.localPosition = new Vector3(-0.4f, 0.15f,0);
-        }
-        else if (spr.flipX == false)
-        {
-            emptyObject.transform.localPosition = new Vector3(0.25f, 0.15f,0);
-        }
+            spr.flipX = movement.x < 0;
+            if (spr.flipX == true)
+            {
+                emptyObject.transform.localPosition = new Vector3(-0.4f, 0.15f, 0);
+            }
+            else if (spr.flipX == false)
+            {
+                emptyObject.transform.localPosition = new Vector3(0.25f, 0.15f, 0);
+            }
         }
         // condition pour que si espace est appuyé, le personnage saute
         if (Input.GetButtonDown("Jump"))
@@ -78,44 +78,66 @@ public class PlayerController : charactee
             }
         }
     }
-    private void Attack(){
+    private void Attack()
+    {
         if (Input.GetKeyDown(KeyCode.A) && !isAnimationPlaying && grounded == true)
         {
             animator.Play("Attaque haut", 0, 0f);
             isAnimationPlaying = true;
 
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamB"));
-            foreach (Collider2D col in hitEnemies){
-                if (col.gameObject != gameObject){
-                col.GetComponent<TeamB>().takeDomage(player.domage);
-            }}
+            foreach (Collider2D col in hitEnemies)
+            {
+                if (col.gameObject != gameObject)
+                {
+                    col.GetComponent<TeamB>().takeDomage(player.domage);
+                }
+            }
         }
         if (Input.GetKeyDown(KeyCode.E) && !isAnimationPlaying && grounded == true)
         {
             animator.Play("attaque left", 0, 0f);
             isAnimationPlaying = true;
 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f,LayerMask.GetMask("TeamB"));
-            foreach (Collider2D col in hitEnemies){
-                if (col.gameObject != gameObject){
-                col.GetComponent<TeamB>().takeDomage(player.domage);
-                }}}}
-void OnCollisionEnter2D(Collision2D collision)
-{
-    foreach (ContactPoint2D contact in collision.contacts)
-    {
-        if (contact.normal.y > 0.8f)
-        {
-            grounded = true;
-            animator.SetBool("InTheAir", false);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamB"));
+            foreach (Collider2D col in hitEnemies)
+            {
+                if (col.gameObject != gameObject)
+                {
+                    col.GetComponent<TeamB>().takeDomage(player.domage);
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.R)&& Input.GetKey(KeyCode.A)&& !isAnimationPlaying && grounded == true){
+            animator.Play("combo final", 0, 0f);
+            isAnimationPlaying = true;
+
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamA"));
+            foreach (Collider2D col in hitEnemies)
+            {
+                if (col.gameObject != gameObject)
+                {
+                    col.GetComponent<PlayerController>().takeCombo(player.combo);
+                }
+            }
         }
     }
-}
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            if (contact.normal.y > 0.8f)
+            {
+                grounded = true;
+                animator.SetBool("InTheAir", false);
+            }
+        }
+    }
 
 
     public void ResetAnimationState()
     {
         isAnimationPlaying = false;
     }
-    
+
 }

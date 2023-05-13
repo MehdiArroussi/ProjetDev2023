@@ -2,14 +2,13 @@ using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : charactee
+public class TeamB : charactee
 {
     [Header("Movement")]
     Rigidbody2D rbody = null;
     Vector2 movement = Vector2.zero;
     public float speed = 2.0f;
     bool grounded = false;
-    [SerializeField] LayerMask layer;
     [SerializeField] Transform checkjoueurs;
     public GameObject emptyObject;
     public float recoilForce = 10.0f;
@@ -27,7 +26,8 @@ public class PlayerController : charactee
     public KeyCode S = KeyCode.S;
     public KeyCode attaquehaut = KeyCode.A;
     public KeyCode attaquecoter = KeyCode.E;
-
+    public KeyCode combo = KeyCode.R;
+    public KeyCode combo2 = KeyCode.LeftShift;
 
     // Start is called before the first frame update
     void Start()
@@ -43,13 +43,14 @@ public class PlayerController : charactee
         // appelle la fonction pour  déplacer le personnage
         OnMove();
         Attack();
-        hpjoueur.text = "HP :" + player.HPplayer;
+        //hpjoueur.text = "HP : " ;
     }
 
     void OnMove()
     {
         // Deplacement du personnage de gauche à droite
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
         // permet de deplacer le personnage de gauche a droite en fonction de la vitesse
         rbody.velocity = new Vector2(movement.x * speed, rbody.velocity.y);
         //declanche l'animation de course
@@ -85,12 +86,12 @@ public class PlayerController : charactee
             animator.Play("Attaque haut", 0, 0f);
             isAnimationPlaying = true;
 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamB"));
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamA"));
             foreach (Collider2D col in hitEnemies)
             {
                 if (col.gameObject != gameObject)
                 {
-                    col.GetComponent<TeamB>().takeDomage(player.domage);
+                    col.GetComponent<PlayerController>().takeDomage(player.domage);
                 }
             }
         }
@@ -99,12 +100,12 @@ public class PlayerController : charactee
             animator.Play("attaque left", 0, 0f);
             isAnimationPlaying = true;
 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamB"));
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamA"));
             foreach (Collider2D col in hitEnemies)
             {
                 if (col.gameObject != gameObject)
                 {
-                    col.GetComponent<TeamB>().takeDomage(player.domage);
+                    col.GetComponent<PlayerController>().takeDomage(player.domage);
                 }
             }
         }
@@ -117,7 +118,7 @@ public class PlayerController : charactee
             {
                 if (col.gameObject != gameObject)
                 {
-                    col.GetComponent<TeamB>().takeCombo(player.combo);
+                    col.GetComponent<PlayerController>().takeCombo(player.combo);
                 }
             }
         }
@@ -133,9 +134,8 @@ public class PlayerController : charactee
             }
         }
     }
-    public void ResetAnimationState()
+       public void ResetAnimationState()
     {
         isAnimationPlaying = false;
     }
-
 }

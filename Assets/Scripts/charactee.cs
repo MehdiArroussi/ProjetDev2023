@@ -15,12 +15,13 @@ public class charactee : MonoBehaviour
     protected Rigidbody2D rbody = null;
     public Player player;
     public float knockbackForce = 5.0f;
+    public Vector2 AttackDirection { get; set; }
 
     protected void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
     }
-public void takeDomage(int domage)
+public void takeDomage(int domage, Vector2 attackDirection)
     {
         player.HPplayer -= domage;
 
@@ -30,11 +31,11 @@ public void takeDomage(int domage)
         }
         else
         {
-            StartCoroutine(ApplyKnockback());
+            StartCoroutine(ApplyKnockback(attackDirection));
         }
     }
 
-    public void takeCombo(int combo)
+    public void takeCombo(int combo, Vector2 attackDirection)
     {
         player.HPplayer -= combo;
         if (player.HPplayer <= 0)
@@ -43,18 +44,19 @@ public void takeDomage(int domage)
         }
         else
         {
-            StartCoroutine(ApplyKnockback());
+            StartCoroutine(ApplyKnockback(attackDirection));
         }
     }
 
-    private IEnumerator ApplyKnockback()
+private IEnumerator ApplyKnockback(Vector2 attackDirection)
+{
+    yield return new WaitForSeconds(0.5f);
+
+    if (rbody != null)
     {
-        yield return new WaitForSeconds(0.25f);
-
-        if (rbody != null)
-        {
-            Vector2 knockbackDirection = new Vector2(0.25f, 0f); // Direction du recul (ici vers la gauche)
-            rbody.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
-        }
+        // Normalise la direction du coup pour obtenir une direction de recul unitaire
+        Vector2 knockbackDirection = -attackDirection.normalized;
+        rbody.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
     }
+}
 }

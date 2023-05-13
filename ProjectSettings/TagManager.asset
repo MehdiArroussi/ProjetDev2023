@@ -3,15 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Player 1
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - TeamA
   - Water
   - UI
-  - 
+  - TeamB
   - 
   - 
   - 

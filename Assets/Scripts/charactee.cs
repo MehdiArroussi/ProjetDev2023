@@ -13,7 +13,6 @@ public class charactee : MonoBehaviour
         public int combo = 5;
     }
     public Player player;
-
     public void takeDomage(int domage)
     {
         player.HPplayer -= domage;

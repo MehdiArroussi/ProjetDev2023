@@ -134,9 +134,8 @@ public class TeamB : charactee
             }
         }
     }
-    public void ResetAnimationState()
+       public void ResetAnimationState()
     {
         isAnimationPlaying = false;
     }
-
 }

@@ -49,7 +49,6 @@ public class PlayerController : charactee
     {
         // Deplacement du personnage de gauche à droite
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
         // permet de deplacer le personnage de gauche a droite en fonction de la vitesse
         rbody.velocity = new Vector2(movement.x * speed, rbody.velocity.y);
         //declanche l'animation de course
@@ -117,7 +116,7 @@ public class PlayerController : charactee
             {
                 if (col.gameObject != gameObject)
                 {
-                    col.GetComponent<PlayerController>().takeCombo(player.combo);
+                    col.GetComponent<TeamB>().takeCombo(player.combo);
                 }
             }
         }
@@ -133,8 +132,6 @@ public class PlayerController : charactee
             }
         }
     }
-
-
     public void ResetAnimationState()
     {
         isAnimationPlaying = false;

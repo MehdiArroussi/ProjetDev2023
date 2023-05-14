@@ -27,7 +27,7 @@ public void takeDomage(int domage)
 
         if (player.HPplayer <= 0)
         {
-            dead = true;
+            Destroy(gameObject);
         }
         else
         {

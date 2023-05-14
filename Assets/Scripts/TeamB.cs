@@ -58,11 +58,11 @@ public class TeamB : charactee
             spr.flipX = movement.x < 0;
             if (spr.flipX == true)
             {
-                emptyObject.transform.localPosition = new Vector3(-0.4f, 0.15f, 0);
+                emptyObject.transform.localPosition = new Vector2(-0.36f, 0.04f);
             }
             else if (spr.flipX == false)
             {
-                emptyObject.transform.localPosition = new Vector3(0.25f, 0.15f, 0);
+                emptyObject.transform.localPosition = new Vector2(0.25f, 0.04f);
             }
         }
         // condition pour que si espace est appuyé, le personnage saute

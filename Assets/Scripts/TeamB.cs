@@ -88,7 +88,7 @@ public class TeamB : charactee
             {
                 if (col.gameObject != gameObject)
                 {
-                    col.GetComponent<PlayerController>().takeDomage(player.domage, attackDirection);
+                    col.GetComponent<PlayerController>().takeDomage(player.domage);
                 }
             }
         }
@@ -102,7 +102,7 @@ public class TeamB : charactee
             {
                 if (col.gameObject != gameObject)
                 {
-                    col.GetComponent<PlayerController>().takeDomage(player.domage, attackDirection);
+                    col.GetComponent<PlayerController>().takeDomage(player.domage);
                 }
             }
         }
@@ -115,7 +115,7 @@ public class TeamB : charactee
             {
                 if (col.gameObject != gameObject)
                 {
-                    col.GetComponent<PlayerController>().takeCombo(player.combo, attackDirection);
+                    col.GetComponent<PlayerController>().takeCombo(player.combo);
                 }
             }
         }

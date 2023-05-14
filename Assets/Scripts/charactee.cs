@@ -15,27 +15,27 @@ public class charactee : MonoBehaviour
     protected Rigidbody2D rbody = null;
     public Player player;
     public float knockbackForce = 5.0f;
-    public Vector2 AttackDirection { get; set; }
+    public bool dead = false;
 
     protected void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
     }
-public void takeDomage(int domage, Vector2 attackDirection)
+public void takeDomage(int domage)
     {
         player.HPplayer -= domage;
 
         if (player.HPplayer <= 0)
         {
-            Destroy(gameObject);
+            dead = true;
         }
         else
         {
-            StartCoroutine(ApplyKnockback(attackDirection));
+            StartCoroutine(ApplyKnockback());
         }
     }
 
-    public void takeCombo(int combo, Vector2 attackDirection)
+    public void takeCombo(int combo)
     {
         player.HPplayer -= combo;
         if (player.HPplayer <= 0)
@@ -44,19 +44,18 @@ public void takeDomage(int domage, Vector2 attackDirection)
         }
         else
         {
-            StartCoroutine(ApplyKnockback(attackDirection));
+            StartCoroutine(ApplyKnockback());
         }
     }
 
-private IEnumerator ApplyKnockback(Vector2 attackDirection)
-{
-    yield return new WaitForSeconds(0.5f);
-
-    if (rbody != null)
+    private IEnumerator ApplyKnockback()
     {
-        // Normalise la direction du coup pour obtenir une direction de recul unitaire
-        Vector2 knockbackDirection = -attackDirection.normalized;
-        rbody.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.25f);
+
+        if (rbody != null)
+        {
+            Vector2 knockbackDirection = new Vector2(0.25f, 0f);
+            rbody.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        }
     }
-}
 }

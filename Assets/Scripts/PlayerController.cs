@@ -90,6 +90,7 @@ public class PlayerController : charactee
                     col.GetComponent<TeamB>().takeDomage(player.domage);
                 }
             }
+            Debug.Log("isAnimationPlaying après : " + isAnimationPlaying);
         }
         if (Input.GetKeyDown(KeyCode.E) && !isAnimationPlaying && grounded == true)
         {
@@ -103,6 +104,7 @@ public class PlayerController : charactee
                 {
                     col.GetComponent<TeamB>().takeDomage(player.domage);
                 }
+                
             }
         }
         if (Input.GetKeyDown(KeyCode.R)&& !isAnimationPlaying && grounded == true){

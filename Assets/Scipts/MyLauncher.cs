@@ -10,8 +10,9 @@ public class MyLauncher : MonoBehaviourPunCallbacks
 {
     public Button btn;
     private Text text;
-    private byte maxPlayersPerRoom = 2;
-    [SerializeField] public LoaderAnime loaderAnime;
+    private byte maxPlayersPerRoom = 4;
+    [SerializeField]
+		private LoaderAnime loaderAnime;
 
     bool isConnecting;
 
@@ -30,7 +31,6 @@ public class MyLauncher : MonoBehaviourPunCallbacks
 			{
 				loaderAnime.StartLoaderAnimation();
 			}
-
         if (PhotonNetwork.isConnected)
         {
             LogFeedback("Joining room...");

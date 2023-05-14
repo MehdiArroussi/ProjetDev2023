@@ -9,29 +9,30 @@ using Photon.Pun;
 public class MyLauncher : MonoBehaviourPunCallbacks
 {
     public Button btn;
-    private Text text;
+    public Text feedbackText;
     private byte maxPlayersPerRoom = 4;
-    [SerializeField]
-		private LoaderAnime loaderAnime;
+    [SerializeField] private LoaderAnime loaderAnime;
+
 
     bool isConnecting;
 
-    string gameVersion = "1";
+    string gameVersion= "1";
 
     void Awake(){
-        PhotonNetwork.AutomaticallySyncScene = True;
+           PhotonNetwork.AutomaticallySyncScene = true ;
+     
     }
 
     public void Connect(){
         feedbackText.text ="";
-        isConnecting = True;
+        isConnecting = true;
         btn.interactable = false;
 
         if (loaderAnime!=null)
 			{
 				loaderAnime.StartLoaderAnimation();
 			}
-        if (PhotonNetwork.isConnected)
+        if (PhotonNetwork.IsConnected)
         {
             LogFeedback("Joining room...");
             PhotonNetwork.JoinRandomRoom();
@@ -39,14 +40,14 @@ public class MyLauncher : MonoBehaviourPunCallbacks
         else {
             LogFeedback("Connecting...");
             PhotonNetwork.ConnectUsingSettings();
-            PhotonNetwork.gameVersion = this.gameVersion;
+            PhotonNetwork.GameVersion = this.gameVersion;
         }   
     }
     void LogFeedback(string message){
         if (feedbackText == null){
             return;
         }
-        feedbackText.text += System.Environment.Newline + message;
+        feedbackText.text += System.Environment.NewLine+message;
     }
     public override void OnConnectedToMaster(){
         if (isConnecting){

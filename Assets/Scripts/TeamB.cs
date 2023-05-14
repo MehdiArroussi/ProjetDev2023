@@ -13,10 +13,8 @@ public class TeamB : charactee
     public float recoilForce = 10.0f;
 
     [Header("Animation")]
-    SpriteRenderer spr = null;
     public LayerMask platformLayer;
     bool isAnimationPlaying = false;
-    Animator animator = null;
     public Text hpjoueur;
 
 
@@ -28,11 +26,7 @@ public class TeamB : charactee
     public KeyCode combo = KeyCode.R;
     public KeyCode combo2 = KeyCode.LeftShift;
 
-    // Start is called before the first frame update
-    private void Start() {
-        animator = GetComponent<Animator>();
-        spr = GetComponent<SpriteRenderer>();
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -58,11 +52,11 @@ public class TeamB : charactee
             spr.flipX = movement.x < 0;
             if (spr.flipX == true)
             {
-                emptyObject.transform.localPosition = new Vector3(-0.4f, 0.15f, 0);
+                emptyObject.transform.localPosition = new Vector2(-0.36f, 0.04f);
             }
             else if (spr.flipX == false)
             {
-                emptyObject.transform.localPosition = new Vector3(0.25f, 0.15f, 0);
+                emptyObject.transform.localPosition = new Vector2(0.25f, 0.04f);
             }
         }
         // condition pour que si espace est appuyé, le personnage saute
@@ -120,7 +114,7 @@ public class TeamB : charactee
             }
         }
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         foreach (ContactPoint2D contact in collision.contacts)
         {

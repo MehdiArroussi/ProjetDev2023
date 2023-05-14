@@ -11,12 +11,11 @@ public class PlayerController : charactee
     [SerializeField] Transform checkjoueurs;
     public GameObject emptyObject;
     public float recoilForce = 10.0f;
+    public bool IsMove = true;
 
     [Header("Animation")]
-    SpriteRenderer spr = null;
     public LayerMask platformLayer;
     bool isAnimationPlaying = false;
-    Animator animator = null;
     public Text hpjoueur;
 
 
@@ -26,13 +25,6 @@ public class PlayerController : charactee
     public KeyCode attaquehaut = KeyCode.A;
     public KeyCode attaquecoter = KeyCode.E;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-        spr = GetComponent<SpriteRenderer>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -44,6 +36,7 @@ public class PlayerController : charactee
     }
     void OnMove()
     {
+        if (IsMove == true)
         // Deplacement du personnage de gauche à droite
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         // permet de deplacer le personnage de gauche a droite en fonction de la vitesse
@@ -56,11 +49,11 @@ public class PlayerController : charactee
             spr.flipX = movement.x < 0;
             if (spr.flipX == true)
             {
-                emptyObject.transform.localPosition = new Vector2(-0.4f, 0.15f);
+                emptyObject.transform.localPosition = new Vector2(-0.36f, 0.04f);
             }
             else if (spr.flipX == false)
             {
-                emptyObject.transform.localPosition = new Vector2(0.25f, 0.15f);
+                emptyObject.transform.localPosition = new Vector2(0.25f, 0.04f);
             }
         }
         // condition pour que si espace est appuyé, le personnage saute
@@ -103,6 +96,7 @@ public class PlayerController : charactee
                 {
                     col.GetComponent<TeamB>().takeDomage(player.domage);
                 }
+                
             }
         }
         if (Input.GetKeyDown(KeyCode.R)&& !isAnimationPlaying && grounded == true){
@@ -130,6 +124,9 @@ public class PlayerController : charactee
                 animator.SetBool("InTheAir", false);
             }
         }
+    }
+    public void canMove(){
+        IsMove = !IsMove;
     }
     public void ResetAnimationState()
     {

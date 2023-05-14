@@ -242,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 171740592}
   - component: {fileID: 171740591}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +682,7 @@ GameObject:
   - component: {fileID: 1886355936}
   - component: {fileID: 1886355939}
   - component: {fileID: 1886355940}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1404,6 +1404,14 @@ PrefabInstance:
     - target: {fileID: -3169120435121415824, guid: dc3b7407e1e9cf34f99ca82c983fdd31, type: 3}
       propertyPath: speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3169120435121415824, guid: dc3b7407e1e9cf34f99ca82c983fdd31, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8923400384396543428, guid: dc3b7407e1e9cf34f99ca82c983fdd31, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8923400384396543448, guid: dc3b7407e1e9cf34f99ca82c983fdd31, type: 3}
       propertyPath: m_RootOrder

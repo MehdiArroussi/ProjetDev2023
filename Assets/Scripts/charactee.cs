@@ -6,27 +6,56 @@ public class charactee : MonoBehaviour
 {
     [System.Serializable]
 
-    public class Player 
+    public class Player
     {
         public float HPplayer = 2;
         public int domage = 1;
         public int combo = 5;
     }
+    protected Rigidbody2D rbody = null;
     public Player player;
-    public void takeDomage(int domage)
+    public float knockbackForce = 5.0f;
+    public bool dead = false;
+
+    protected void Awake()
+    {
+        rbody = GetComponent<Rigidbody2D>();
+    }
+public void takeDomage(int domage)
     {
         player.HPplayer -= domage;
+
         if (player.HPplayer <= 0)
         {
-            Destroy(this.gameObject);
+            dead = true;
         }
-}
+        else
+        {
+            StartCoroutine(ApplyKnockback());
+        }
+    }
+
     public void takeCombo(int combo)
     {
         player.HPplayer -= combo;
         if (player.HPplayer <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+        }
+        else
+        {
+            StartCoroutine(ApplyKnockback());
+        }
+    }
+
+    private IEnumerator ApplyKnockback()
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        if (rbody != null)
+        {
+            Vector2 knockbackDirection = new Vector2(0.25f, 0f);
+            rbody.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
         }
     }
 }

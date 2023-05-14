@@ -2,23 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class charactee : MonoBehaviour
 {
     [System.Serializable]
 
     public class Player
     {
-        public float HPplayer = 2;
+        public float HPplayer = 10;
         public int domage = 1;
         public int combo = 5;
     }
     protected Rigidbody2D rbody = null;
+
     public Player player;
+
+    protected Animator animator = null;
+    protected SpriteRenderer spr = null;
+
     public float knockbackForce = 5.0f;
-    public bool dead = false;
+
+    public bool dead = false;  
+
+
+
 
     protected void Awake()
-    {
+    {  
+        spr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         rbody = GetComponent<Rigidbody2D>();
     }
 public void takeDomage(int domage)
@@ -27,11 +39,13 @@ public void takeDomage(int domage)
 
         if (player.HPplayer <= 0)
         {
+            dead = true;
             Destroy(gameObject);
         }
         else
         {
             StartCoroutine(ApplyKnockback());
+            animator.Play("takehit", 0, 0f);
         }
     }
 
@@ -45,6 +59,7 @@ public void takeDomage(int domage)
         else
         {
             StartCoroutine(ApplyKnockback());
+            animator.Play("takehit", 0, 0f);
         }
     }
 

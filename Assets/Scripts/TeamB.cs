@@ -13,10 +13,8 @@ public class TeamB : charactee
     public float recoilForce = 10.0f;
 
     [Header("Animation")]
-    SpriteRenderer spr = null;
     public LayerMask platformLayer;
     bool isAnimationPlaying = false;
-    Animator animator = null;
     public Text hpjoueur;
 
 
@@ -28,11 +26,7 @@ public class TeamB : charactee
     public KeyCode combo = KeyCode.R;
     public KeyCode combo2 = KeyCode.LeftShift;
 
-    // Start is called before the first frame update
-    private void Start() {
-        animator = GetComponent<Animator>();
-        spr = GetComponent<SpriteRenderer>();
-    }
+
 
     // Update is called once per frame
     void Update()

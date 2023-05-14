@@ -114,7 +114,7 @@ public class TeamB : charactee
             }
         }
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         foreach (ContactPoint2D contact in collision.contacts)
         {

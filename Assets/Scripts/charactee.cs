@@ -25,22 +25,19 @@ public class charactee : MonoBehaviour
     public bool dead = false;  
 
 
-
-
     protected void Awake()
     {  
         spr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rbody = GetComponent<Rigidbody2D>();
     }
-public void takeDomage(int domage)
+    public void takeDomage(int domage)
     {
         player.HPplayer -= domage;
 
         if (player.HPplayer <= 0)
         {
-            dead = true;
-            Destroy(gameObject);
+            StartCoroutine(PlayDeathAnimation());
         }
         else
         {
@@ -62,15 +59,21 @@ public void takeDomage(int domage)
             animator.Play("takehit", 0, 0f);
         }
     }
-
+    
+    private IEnumerator PlayDeathAnimation()
+    {
+        animator.Play("dead");
+         yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
     private IEnumerator ApplyKnockback()
     {
         yield return new WaitForSeconds(0.25f);
 
         if (rbody != null)
         {
-            Vector2 knockbackDirection = new Vector2(0.25f, 0f);
-            rbody.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+           // Vector2 knockbackDirection = new Vector2(0.25f, 0f);
+            //rbody.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
         }
     }
 }

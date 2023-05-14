@@ -11,6 +11,7 @@ public class PlayerController : charactee
     [SerializeField] Transform checkjoueurs;
     public GameObject emptyObject;
     public float recoilForce = 10.0f;
+    public bool IsMove = true;
 
     [Header("Animation")]
     public LayerMask platformLayer;
@@ -35,6 +36,7 @@ public class PlayerController : charactee
     }
     void OnMove()
     {
+        if (IsMove == true)
         // Deplacement du personnage de gauche à droite
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         // permet de deplacer le personnage de gauche a droite en fonction de la vitesse
@@ -122,6 +124,9 @@ public class PlayerController : charactee
                 animator.SetBool("InTheAir", false);
             }
         }
+    }
+    public void canMove(){
+        IsMove = !IsMove;
     }
     public void ResetAnimationState()
     {

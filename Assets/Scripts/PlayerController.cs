@@ -40,9 +40,8 @@ public class PlayerController : charactee
         // appelle la fonction pour  déplacer le personnage
         OnMove();
         Attack();
-        hpjoueur.text = "HP :" + player.HPplayer;
+        //hpjoueur.text = "HP :" + player.HPplayer;
     }
-
     void OnMove()
     {
         // Deplacement du personnage de gauche à droite

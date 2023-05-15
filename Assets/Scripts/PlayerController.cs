@@ -30,9 +30,11 @@ public class PlayerController : charactee
 
 
     // Update is called once per frame
-        private void Update()
-        {
-    OnMove();
+    private void Update()
+    {
+        OnMove();
+        if(!photonView.IsMine)
+        return;
         Attack();
     }
     void OnMove()
@@ -68,6 +70,10 @@ public class PlayerController : charactee
         }
     }
 
+    private void FixedUpdate(){
+        if(!photonView.IsMine)
+        return;
+    }
     private void Attack()
     {
         if (Input.GetKeyDown(KeyCode.A) && !isAnimationPlaying && grounded == true)

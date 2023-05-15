@@ -45,6 +45,8 @@ GameObject:
   - component: {fileID: 30870315344102083}
   - component: {fileID: 30870315344102095}
   - component: {fileID: 30870315344102088}
+  - component: {fileID: 7290792919260464838}
+  - component: {fileID: 4349998687864746491}
   m_Layer: 6
   m_Name: SamouraiB
   m_TagString: Player
@@ -200,9 +202,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player:
-    HPplayer: 2
+    HPplayer: 10
     domage: 1
     combo: 5
+  healthBar: {fileID: 3292914541574567004, guid: 8976a0bf80715264abb0c98018694a76, type: 3}
   knockbackForce: 5
   dead: 0
   speed: 5
@@ -213,9 +216,49 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   hpjoueur: {fileID: 0}
+  healthBarTeamB: {fileID: 3292914541574567004, guid: 8976a0bf80715264abb0c98018694a76, type: 3}
   crouchKey: 306
   S: 115
   attaquehaut: 97
   attaquecoter: 101
   combo: 114
   combo2: 304
+--- !u!114 &7290792919260464838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30870315344102082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 4349998687864746491}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &4349998687864746491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30870315344102082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1

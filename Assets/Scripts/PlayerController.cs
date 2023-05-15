@@ -20,6 +20,7 @@ public class PlayerController : charactee
     public LayerMask platformLayer;
     bool isAnimationPlaying = false;
     public Text hpjoueur;
+    public Slider healthBarTeamA ;
 
 
     [Header("Inputs")]
@@ -135,5 +136,9 @@ public class PlayerController : charactee
     public void ResetAnimationState()
     {
         isAnimationPlaying = false;
+    }
+    public void UpdateHealthBarTeamA(int currentHealth)
+    {
+        healthBarTeamA.value = currentHealth;
     }
 }

@@ -45,6 +45,8 @@ GameObject:
   - component: {fileID: 4019938359965120973}
   - component: {fileID: 4019938359965120966}
   - component: {fileID: 4019938359965120961}
+  - component: {fileID: 4177645040541071550}
+  - component: {fileID: 7455484069755250053}
   m_Layer: 3
   m_Name: SamouraiA
   m_TagString: Player
@@ -180,9 +182,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player:
-    HPplayer: 2
+    HPplayer: 10
     domage: 1
     combo: 5
+  healthBar: {fileID: 2700513884332775960, guid: 9a32dc2858b877c48bd0d8c648ff01c5, type: 3}
   knockbackForce: 5
   dead: 0
   speed: 5
@@ -192,10 +195,12 @@ MonoBehaviour:
   checkjoueurs: {fileID: 4019938359596566985}
   emptyObject: {fileID: 4019938359596566984}
   recoilForce: 10
+  IsMove: 1
   platformLayer:
     serializedVersion: 2
     m_Bits: 8
   hpjoueur: {fileID: 0}
+  healthBarTeamA: {fileID: 2700513884332775960, guid: 9a32dc2858b877c48bd0d8c648ff01c5, type: 3}
   crouchKey: 306
   S: 115
   attaquehaut: 97
@@ -220,3 +225,42 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &4177645040541071550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4019938359965120972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 7455484069755250053}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &7455484069755250053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4019938359965120972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1

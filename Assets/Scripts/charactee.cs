@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 
 public class charactee : MonoBehaviourPunCallbacks
@@ -12,13 +13,14 @@ public class charactee : MonoBehaviourPunCallbacks
 
     public class Player
     {
-        public float HPplayer = 10;
+        public int HPplayer = 10;
         public int domage = 1;
         public int combo = 5;
     }
     protected Rigidbody2D rbody = null;
 
     public Player player;
+    public Slider healthBar;
 
     protected Animator animator = null;
     protected SpriteRenderer spr = null;
@@ -37,6 +39,18 @@ public class charactee : MonoBehaviourPunCallbacks
     public void takeDomage(int domage)
     {
         player.HPplayer -= domage;
+        healthBar.value = player.HPplayer;
+        // Mise à jour de la barre de vie en fonction de l'équipe
+    if (gameObject.GetComponent<PlayerController>() != null)
+    {
+        PlayerController teamA = gameObject.GetComponent<PlayerController>();
+        teamA.UpdateHealthBarTeamA(player.HPplayer);
+    }
+    else if (gameObject.GetComponent<TeamB>() != null)
+    {
+        TeamB teamB = gameObject.GetComponent<TeamB>();
+        teamB.UpdateHealthBarTeamB(player.HPplayer);
+    }
 
         if (player.HPplayer <= 0)
         {
@@ -52,6 +66,7 @@ public class charactee : MonoBehaviourPunCallbacks
     public void takeCombo(int combo)
     {
         player.HPplayer -= combo;
+        healthBar.value = player.HPplayer;
         if (player.HPplayer <= 0)
         {
             Destroy(gameObject);

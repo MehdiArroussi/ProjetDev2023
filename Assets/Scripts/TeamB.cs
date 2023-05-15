@@ -19,6 +19,7 @@ public class TeamB : charactee
     public LayerMask platformLayer;
     bool isAnimationPlaying = false;
     public Text hpjoueur;
+    public Slider healthBarTeamB;
 
 
     [Header("Inputs")]
@@ -130,4 +131,8 @@ public class TeamB : charactee
     {
         isAnimationPlaying = false;
     }
+    public void UpdateHealthBarTeamB(int currentHealth)
+{
+    healthBarTeamB.value = currentHealth;
+}
 }

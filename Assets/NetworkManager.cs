@@ -35,6 +35,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom(){
         Debug.Log(PhotonNetwork.CurrentRoom.Name + " joined");
+        PhotonNetwork.Instantiate(player.name,startPoint.position,Quaternion.identity);
     }
     // Start is called before the first frame update
     void Start()

@@ -68,7 +68,7 @@ public class MyLauncher : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom(){
         if (PhotonNetwork.CurrentRoom.PlayerCount ==1 ){
-            PhotonNetwork.LoadLevel("Testinstance");
+            PhotonNetwork.LoadLevel("map1");
         }
     }
 }

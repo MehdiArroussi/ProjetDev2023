@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour
             enabled = false;
         }
         SetTimerText();
-
+        
     }
 
     private void SetTimerText() {

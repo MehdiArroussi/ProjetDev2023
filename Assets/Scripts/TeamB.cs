@@ -34,6 +34,8 @@ public class TeamB : charactee
 
         private void Update()
         {
+              if(!photonView.IsMine)
+        return;
         OnMove();
         Attack();
     }

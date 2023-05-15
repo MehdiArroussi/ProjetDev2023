@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 
-public class charactee : MonoBehaviour
+public class charactee : MonoBehaviourPunCallbacks
 {
     [System.Serializable]
 

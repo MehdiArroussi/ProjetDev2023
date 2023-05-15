@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class PlayerController : charactee
 {
+    
     [Header("Movement")]
     Vector2 movement = Vector2.zero;
     public float speed = 2.0f;
@@ -27,16 +30,13 @@ public class PlayerController : charactee
 
 
     // Update is called once per frame
-    void Update()
-    {
-        // appelle la fonction pour  déplacer le personnage
-        OnMove();
+        private void Update()
+        {
+    OnMove();
         Attack();
-        //hpjoueur.text = "HP :" + player.HPplayer;
     }
     void OnMove()
     {
-        if (IsMove == true)
         // Deplacement du personnage de gauche à droite
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         // permet de deplacer le personnage de gauche a droite en fonction de la vitesse

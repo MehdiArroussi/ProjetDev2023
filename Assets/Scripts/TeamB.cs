@@ -1,9 +1,12 @@
 using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class TeamB : charactee
 {
+
     [Header("Movement")]
     Vector2 movement = Vector2.zero;
     public float speed = 2.0f;
@@ -28,14 +31,13 @@ public class TeamB : charactee
 
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        // appelle la fonction pour  déplacer le personnage
+
+        private void Update()
+        {
         OnMove();
         Attack();
-        //hpjoueur.text = "HP : " ;
     }
+
 
     void OnMove()
     {

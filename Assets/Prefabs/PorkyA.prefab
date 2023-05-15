@@ -405,6 +405,8 @@ MonoBehaviour:
     HPplayer: 2
     domage: 1
     combo: 5
+  knockbackForce: 5
+  dead: 0
   speed: 5
   layer:
     serializedVersion: 2
@@ -412,6 +414,7 @@ MonoBehaviour:
   checkjoueurs: {fileID: 2007282656039206764}
   emptyObject: {fileID: 2007282656039206755}
   recoilForce: 10
+  IsMove: 1
   platformLayer:
     serializedVersion: 2
     m_Bits: 8

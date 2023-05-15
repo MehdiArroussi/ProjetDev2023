@@ -42,8 +42,13 @@ public class PlayerController : charactee
     }
     void OnMove()
     {
-        if (isAttacking)
+    if (!IsMove)
+    {
+        // Si IsMove est faux, le personnage ne peut pas bouger
+        movement = Vector2.zero;
+        rbody.velocity = Vector2.zero;
         return;
+    }
         // Deplacement du personnage de gauche à droite
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         // permet de deplacer le personnage de gauche a droite en fonction de la vitesse
@@ -135,7 +140,7 @@ public class PlayerController : charactee
             }
         }
     }
-    public void canMove(){
+    private void canMove(){
         IsMove = !IsMove;
     }
     public void ResetAnimationState()

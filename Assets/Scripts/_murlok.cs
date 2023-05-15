@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
-public class _murlok : MonoBehaviour
+public class _murlok : MonoBehaviourPunCallbacks
 {
     public TextMesh textMesh;
     public float pourcentagederecul = 0;
@@ -33,10 +34,12 @@ public class _murlok : MonoBehaviour
     void Update()
     {   
         // appelle la fonction pour  déplacer le personnage
+        if(!photonView.IsMine)
+            return;
         OnMove();
     }
-
-    void OnMove(){
+    
+    public void OnMove(){
         // Deplacement du personnage de gauche à droite
         movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
 

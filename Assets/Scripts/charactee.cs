@@ -5,7 +5,8 @@ using Photon.Pun;
 using Photon.Realtime;
 
 
-public class charactee : MonoBehaviourPun
+public class charactee : MonoBehaviourPunCallbacks
+
 {
     [System.Serializable]
 

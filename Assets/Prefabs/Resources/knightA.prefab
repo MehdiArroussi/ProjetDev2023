@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4037913224329695195}
   - component: {fileID: 3041632432732275971}
   - component: {fileID: 1499547806176366614}
+  - component: {fileID: 6782975511681517983}
   m_Layer: 3
   m_Name: knightA
   m_TagString: Player
@@ -233,6 +234,23 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &6782975511681517983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4037913224329695196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2122fcfedeb645f4cbc9f97363faa0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 4037913224329695196}
+  player2: {fileID: 30870315344102082, guid: 384f3a04ee74ff04c8dcb119520f7f6e, type: 3}
+  deadZone: {fileID: 4214277081809801340, guid: e7cbd425bc43f28458412181de02921b, type: 3}
+  timerObject: {fileID: 246964060308566353, guid: a7bde8bf607baed4ba001b85edfab8e1, type: 3}
+  timeLimit: 50
 --- !u!1 &4037913224594637474
 GameObject:
   m_ObjectHideFlags: 0

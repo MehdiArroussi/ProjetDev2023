@@ -11,7 +11,7 @@ public class Manage : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector2(0,0), Quaternion.identity,0);
-    }
+        }
 
     // Update is called once per frame
     void Update()

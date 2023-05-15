@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 30870315344102095}
   - component: {fileID: 30870315344102088}
   - component: {fileID: 7290792919260464838}
+  - component: {fileID: 4453674205899100398}
   - component: {fileID: 4349998687864746491}
   m_Layer: 6
   m_Name: SamouraiB
@@ -212,6 +213,7 @@ MonoBehaviour:
   checkjoueurs: {fileID: 30870314169086663}
   emptyObject: {fileID: 30870314169086662}
   recoilForce: 10
+  IsMove: 1
   platformLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -246,6 +248,23 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &4453674205899100398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30870315344102082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2122fcfedeb645f4cbc9f97363faa0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 4037913224329695196, guid: 1b4e6ee123dc0864695987724dfda2ee, type: 3}
+  player2: {fileID: 30870315344102082}
+  deadZone: {fileID: 4214277081809801340, guid: e7cbd425bc43f28458412181de02921b, type: 3}
+  timerObject: {fileID: 246964060308566353, guid: a7bde8bf607baed4ba001b85edfab8e1, type: 3}
+  timeLimit: 50
 --- !u!114 &4349998687864746491
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class PlayerController : charactee
     bool isAnimationPlaying = false;
     public Text hpjoueur;
     public Slider healthBarTeamA ;
+    bool isAttacking = false;
 
 
     [Header("Inputs")]
@@ -41,6 +42,8 @@ public class PlayerController : charactee
     }
     void OnMove()
     {
+        if (isAttacking)
+        return;
         // Deplacement du personnage de gauche à droite
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         // permet de deplacer le personnage de gauche a droite en fonction de la vitesse
@@ -79,6 +82,7 @@ public class PlayerController : charactee
         {
             animator.Play("Attaque haut", 0, 0f);
             isAnimationPlaying = true;
+            isAttacking = true;
 
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamB"));
             foreach (Collider2D col in hitEnemies)
@@ -93,6 +97,7 @@ public class PlayerController : charactee
         {
             animator.Play("attaque left", 0, 0f);
             isAnimationPlaying = true;
+            isAttacking = true;
 
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamB"));
             foreach (Collider2D col in hitEnemies)

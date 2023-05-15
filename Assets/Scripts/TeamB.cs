@@ -38,7 +38,6 @@ public class TeamB : charactee
         Attack();
     }
 
-
     void OnMove()
     {
         // Deplacement du personnage de gauche à droite

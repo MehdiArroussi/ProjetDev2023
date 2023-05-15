@@ -85,7 +85,7 @@ public class charactee : MonoBehaviourPunCallbacks
         Destroy(gameObject);
         healthBar.value = 10;
     }
-
+    
     private IEnumerator ApplyKnockback()
     {
         yield return new WaitForSeconds(0.25f);

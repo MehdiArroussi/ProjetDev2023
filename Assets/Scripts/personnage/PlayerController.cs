@@ -87,7 +87,6 @@ public class PlayerController : charactee
         {
             animator.Play("Attaque haut", 0, 0f);
             isAnimationPlaying = true;
-            isAttacking = true;
 
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamB"));
             foreach (Collider2D col in hitEnemies)
@@ -102,7 +101,6 @@ public class PlayerController : charactee
         {
             animator.Play("attaque left", 0, 0f);
             isAnimationPlaying = true;
-            isAttacking = true;
 
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamB"));
             foreach (Collider2D col in hitEnemies)

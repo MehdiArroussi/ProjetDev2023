@@ -20,7 +20,6 @@ public class MyLauncher : MonoBehaviourPunCallbacks
 
     void Awake(){
            PhotonNetwork.AutomaticallySyncScene = true ;
-     
     }
 
     public void Connect(){
@@ -65,7 +64,6 @@ public class MyLauncher : MonoBehaviourPunCallbacks
         isConnecting = false;
         btn.interactable = true;
     }
-
     public override void OnJoinedRoom(){
         if (PhotonNetwork.CurrentRoom.PlayerCount ==1 ){
             PhotonNetwork.LoadLevel("map1");

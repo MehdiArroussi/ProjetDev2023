@@ -77,21 +77,12 @@ public class charactee : MonoBehaviourPunCallbacks
             animator.Play("takehit", 0, 0f);
         }
     }
-    
-    public void CanMove()
-    {
-    PlayerController playerController = GetComponent<PlayerController>();
-        if (playerController != null)
-        {
-            playerController.CanMove();
-        }
-    }
+
     private IEnumerator PlayDeathAnimation()
     {
         animator.Play("dead");
          yield return new WaitForSeconds(2f);
         Destroy(gameObject);
-        canMove();
     }
 
     private IEnumerator ApplyKnockback()

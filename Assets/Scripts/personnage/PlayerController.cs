@@ -42,8 +42,6 @@ public class PlayerController : charactee
     }
     void OnMove()
     {
-        if (isAttacking)
-        return;
         // Deplacement du personnage de gauche à droite
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         // permet de deplacer le personnage de gauche a droite en fonction de la vitesse

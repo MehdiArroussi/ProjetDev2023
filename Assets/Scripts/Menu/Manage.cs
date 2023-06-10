@@ -8,19 +8,14 @@ public class Manage : MonoBehaviourPunCallbacks
 {
     public GameObject playerPrefabA;
     public GameObject playerPrefabB;
-
+    MyLauncher launcher = FindObjectOfType<MyLauncher>();
     void Start()
     {
-        MyLauncher launcher = FindObjectOfType<MyLauncher>();
-        if (launcher != null)
-        {
             Dictionary<int, string> playerIDs = launcher.GetPlayerIDs();
 
             // Afficher les identifiants des joueurs dans la console
-            foreach (var playerID in playerIDs)
-            {
-                Debug.Log("ID du joueur : " + playerID.Key + ", Nom : " + playerID.Value);
-            }
+            foreach (KeyValuePair<int, string> playerID in playerIDs)
+                Debug.Log("ID du joueur : " + playerID.Key + ", Nomaa : " + playerID.Value);
 
             if (playerIDs.ContainsKey(1))
             {
@@ -33,6 +28,4 @@ public class Manage : MonoBehaviourPunCallbacks
                 PhotonNetwork.Instantiate(this.playerPrefabB.name, new Vector2(0, 0), Quaternion.identity, 0);
             }
         }
-    }
 }
-

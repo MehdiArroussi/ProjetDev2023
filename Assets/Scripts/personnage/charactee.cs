@@ -77,14 +77,15 @@ public class charactee : MonoBehaviourPunCallbacks
             animator.Play("takehit", 0, 0f);
         }
     }
-
+    
     private IEnumerator PlayDeathAnimation()
     {
         animator.Play("dead");
          yield return new WaitForSeconds(2f);
         Destroy(gameObject);
+        healthBar.value = 10;
     }
-
+    
     private IEnumerator ApplyKnockback()
     {
         yield return new WaitForSeconds(0.25f);

@@ -25,7 +25,6 @@ public class PlayerController : charactee
 
 
     [Header("Inputs")]
-    public KeyCode crouchKey = KeyCode.LeftControl;
     public KeyCode S = KeyCode.S;
     public KeyCode attaquehaut = KeyCode.A;
     public KeyCode attaquecoter = KeyCode.E;
@@ -42,6 +41,13 @@ public class PlayerController : charactee
     }
     void OnMove()
     {
+    if (!IsMove)
+    {
+        // Si IsMove est faux, le personnage ne peut pas bouger
+        movement = Vector2.zero;
+        rbody.velocity = Vector2.zero;
+        return;
+    }
         // Deplacement du personnage de gauche à droite
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         // permet de deplacer le personnage de gauche a droite en fonction de la vitesse
@@ -80,7 +86,6 @@ public class PlayerController : charactee
         {
             animator.Play("Attaque haut", 0, 0f);
             isAnimationPlaying = true;
-            isAttacking = true;
 
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamB"));
             foreach (Collider2D col in hitEnemies)
@@ -95,7 +100,6 @@ public class PlayerController : charactee
         {
             animator.Play("attaque left", 0, 0f);
             isAnimationPlaying = true;
-            isAttacking = true;
 
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(checkjoueurs.position, 0.5f, LayerMask.GetMask("TeamB"));
             foreach (Collider2D col in hitEnemies)
@@ -133,7 +137,7 @@ public class PlayerController : charactee
             }
         }
     }
-    public void canMove(){
+    private void canMove(){
         IsMove = !IsMove;
     }
     public void ResetAnimationState()

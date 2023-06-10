@@ -1,4 +1,4 @@
-using Photon.Pun;
+/*using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
@@ -29,4 +29,4 @@ public class CharacterLoader : MonoBehaviourPunCallbacks
             Instantiate(characterPrefabB, transform.position, Quaternion.identity);
         }
     }
-}
+}*/

@@ -560,7 +560,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1316581327}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -960,8 +960,8 @@ GameObject:
   - component: {fileID: 1316581322}
   - component: {fileID: 1316581321}
   - component: {fileID: 1316581320}
+  - component: {fileID: 1316581329}
   - component: {fileID: 1316581326}
-  - component: {fileID: 1316581327}
   - component: {fileID: 1316581328}
   m_Layer: 5
   m_Name: CanvasMenu
@@ -1077,18 +1077,6 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1316581327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1316581319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35bc49e8a7848f447a6efd92a5973804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1316581328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,6 +1091,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btn: {fileID: 284100014}
   feedbackText: {fileID: 0}
+--- !u!114 &1316581329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316581319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35bc49e8a7848f447a6efd92a5973804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1886451993
 GameObject:
   m_ObjectHideFlags: 0

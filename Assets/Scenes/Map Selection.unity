@@ -391,7 +391,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 722834352}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 934801718}
+        m_TargetAssemblyTypeName: MapSelection, Assembly-CSharp
+        m_MethodName: Map1
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: map3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &722834352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,6 +587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 934801716}
   - component: {fileID: 934801717}
+  - component: {fileID: 934801718}
   m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
@@ -630,6 +643,18 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &934801718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934801715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9852c02e0ae8ca54caabc3c58b6d3cec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1004082177
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +738,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1004082180}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 934801718}
+        m_TargetAssemblyTypeName: MapSelection, Assembly-CSharp
+        m_MethodName: Map1
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: map1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1004082180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1521,7 +1558,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1890481374}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 934801718}
+        m_TargetAssemblyTypeName: MapSelection, Assembly-CSharp
+        m_MethodName: Map1
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: map2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1890481374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1643,7 +1692,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1988429672}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 934801718}
+        m_TargetAssemblyTypeName: MapSelection, Assembly-CSharp
+        m_MethodName: Map1
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: map4
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1988429672
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,9 +8,9 @@ public class Manage : MonoBehaviourPunCallbacks
 {
     public GameObject playerPrefabA;
     public GameObject playerPrefabB;
-    MyLauncher launcher = FindObjectOfType<MyLauncher>();
     void Start()
     {
+            MyLauncher launcher = FindObjectOfType<MyLauncher>();
             Dictionary<int, string> playerIDs = launcher.GetPlayerIDs();
 
             // Afficher les identifiants des joueurs dans la console

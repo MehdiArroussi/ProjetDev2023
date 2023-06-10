@@ -25,7 +25,6 @@ public class PlayerController : charactee
 
 
     [Header("Inputs")]
-    public KeyCode crouchKey = KeyCode.LeftControl;
     public KeyCode S = KeyCode.S;
     public KeyCode attaquehaut = KeyCode.A;
     public KeyCode attaquecoter = KeyCode.E;

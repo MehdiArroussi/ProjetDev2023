@@ -14,6 +14,11 @@ public class MyLauncher : MonoBehaviourPunCallbacks
     private byte maxPlayersPerRoom = 4;
     private Dictionary<int, string> playerIDs = new Dictionary<int, string>(); // Dictionnaire pour stocker les identifiants des joueurs
 
+    public Dictionary<int, string> GetPlayerIDs()
+    {
+        return playerIDs;
+    }
+
     bool isConnecting;
 
     string gameVersion = "1";

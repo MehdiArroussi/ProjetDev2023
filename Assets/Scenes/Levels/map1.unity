@@ -2906,6 +2906,14 @@ PrefabInstance:
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 4037913224329695196, guid: 1b4e6ee123dc0864695987724dfda2ee, type: 3}
+    - target: {fileID: 5442415241519356436, guid: 1c42d2768bc26c14cb6862b7268e5b7e, type: 3}
+      propertyPath: playerPrefabA
+      value: 
+      objectReference: {fileID: 8619757534419996109, guid: 3e0ab9e65e454cc4fb032b5e1389feeb, type: 3}
+    - target: {fileID: 5442415241519356436, guid: 1c42d2768bc26c14cb6862b7268e5b7e, type: 3}
+      propertyPath: playerPrefabB
+      value: 
+      objectReference: {fileID: 30870315344102082, guid: 384f3a04ee74ff04c8dcb119520f7f6e, type: 3}
     - target: {fileID: 5442415241519356437, guid: 1c42d2768bc26c14cb6862b7268e5b7e, type: 3}
       propertyPath: m_RootOrder
       value: 3

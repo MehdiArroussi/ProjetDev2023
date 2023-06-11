@@ -22,14 +22,13 @@ public class MapSelection : MonoBehaviour
     {
         selectedPlayer = player;
         playerSelected = true;
-        
         CheckSelection();
     }
 
     private void CheckSelection()
     {
         Debug.Log("Map: " + mapSelected + " Player: " + playerSelected);  
-        if (mapSelected && playerSelected == true )
+        if (mapSelected && playerSelected)
         {
             SceneManager.LoadScene("map1");
         }

@@ -1,14 +1,36 @@
-using System.Security.Cryptography;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MapSelection : MonoBehaviour
 {
-    public void Map1(string scene)
+    public string selectedMap;
+    public GameObject selectedPlayer;
+
+    private bool mapSelected = false;
+    private bool playerSelected = false;
+
+    public void SelectMap(string map)
     {
-        SceneManager.LoadScene(scene);
+        selectedMap = map;
+        mapSelected = true;
+
+        CheckSelection();
+    }
+
+    public void SelectPlayer(GameObject player)
+    {
+        selectedPlayer = player;
+        playerSelected = true;
+
+        CheckSelection();
+    }
+
+    private void CheckSelection()
+    {
+        if (mapSelected && playerSelected)
+        {
+            SceneManager.LoadScene(selectedMap);
+        }
     }
 }

@@ -46,7 +46,8 @@ GameObject:
   - component: {fileID: 4019938359965120966}
   - component: {fileID: 4019938359965120961}
   - component: {fileID: 4177645040541071550}
-  - component: {fileID: 7455484069755250053}
+  - component: {fileID: 2217236850202989247}
+  - component: {fileID: 4060226026865931449}
   m_Layer: 3
   m_Name: SamouraiA
   m_TagString: Player
@@ -201,7 +202,6 @@ MonoBehaviour:
     m_Bits: 8
   hpjoueur: {fileID: 0}
   healthBarTeamA: {fileID: 2700513884332775960, guid: 9a32dc2858b877c48bd0d8c648ff01c5, type: 3}
-  crouchKey: 306
   S: 115
   attaquehaut: 97
   attaquecoter: 101
@@ -244,11 +244,12 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 7455484069755250053}
+  - {fileID: 2217236850202989247}
+  - {fileID: 4060226026865931449}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &7455484069755250053
+--- !u!114 &2217236850202989247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -257,10 +258,66 @@ MonoBehaviour:
   m_GameObject: {fileID: 4019938359965120972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: Running
+  - Type: 4
+    SynchronizeType: 2
+    Name: InTheAir
+  - Type: 4
+    SynchronizeType: 2
+    Name: Jump
+  - Type: 4
+    SynchronizeType: 2
+    Name: takehit
+  - Type: 4
+    SynchronizeType: 2
+    Name: Attaque haut
+  - Type: 4
+    SynchronizeType: 2
+    Name: attaque left
+  - Type: 4
+    SynchronizeType: 2
+    Name: dead
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+--- !u!114 &4060226026865931449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4019938359965120972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0

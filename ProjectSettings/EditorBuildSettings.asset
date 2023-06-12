@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/map2.unity
     guid: 8f6d6b6112d535b4aa58228b79401db3
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 48f58a0156a38a148bc920727b5e6f3e
+  - enabled: 1
+    path: Assets/Scenes/Room.unity
+    guid: bb1a7db47a5fe4440b5948b862d5f44c
   m_configObjects: {}

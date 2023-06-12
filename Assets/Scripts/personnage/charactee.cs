@@ -19,6 +19,8 @@ public class charactee : MonoBehaviourPunCallbacks
     }
     protected Rigidbody2D rbody = null;
 
+    public PhotonView view;
+    
     public Player player;
     public Slider healthBar;
 
@@ -29,12 +31,15 @@ public class charactee : MonoBehaviourPunCallbacks
 
     public bool dead = false;  
 
+    
+
 
     protected void Awake()
     {  
         spr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rbody = GetComponent<Rigidbody2D>();
+        view = GetComponent<PhotonView>();
     }
     public void takeDomage(int domage)
     {

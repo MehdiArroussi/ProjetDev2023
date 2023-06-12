@@ -21,7 +21,7 @@ public class PlayerController : charactee
     bool isAnimationPlaying = false;
     public Text hpjoueur;
     public Slider healthBarTeamA ;
-    bool isAttacking = false;
+
 
 
     [Header("Inputs")]
@@ -29,15 +29,18 @@ public class PlayerController : charactee
     public KeyCode attaquehaut = KeyCode.A;
     public KeyCode attaquecoter = KeyCode.E;
 
+    
 
     // Update is called once per frame
     private void Update()
     {
-        if(!photonView.IsMine)
-        return;
+       if(view.IsMine) {
         OnMove();
-        
         Attack();
+       }
+
+
+
     }
     void OnMove()
     {

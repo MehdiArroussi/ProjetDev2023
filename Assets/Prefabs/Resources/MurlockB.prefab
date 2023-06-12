@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 950659680525132396}
   - component: {fileID: 5115109763057865273}
   - component: {fileID: 7406299723554938030}
-  - component: {fileID: 7834862716889578978}
+  - component: {fileID: 7653229655246180630}
+  - component: {fileID: 2308160431841979425}
   m_Layer: 6
   m_Name: MurlockB
   m_TagString: Player
@@ -170,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7792dd46d6b7f04b80499f59bc0041a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 0}
   player:
     HPplayer: 10
     domage: 1
@@ -181,6 +183,7 @@ MonoBehaviour:
   checkjoueurs: {fileID: 950659680770403420}
   emptyObject: {fileID: 950659680770403421}
   recoilForce: 10
+  IsMove: 1
   platformLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -211,11 +214,12 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 7834862716889578978}
+  - {fileID: 7653229655246180630}
+  - {fileID: 2308160431841979425}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &7834862716889578978
+--- !u!114 &7653229655246180630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,13 +228,69 @@ MonoBehaviour:
   m_GameObject: {fileID: 950659680525132397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: Running
+  - Type: 4
+    SynchronizeType: 2
+    Name: InTheAir
+  - Type: 4
+    SynchronizeType: 2
+    Name: Attaque haut
+  - Type: 4
+    SynchronizeType: 2
+    Name: attaque left
+  - Type: 4
+    SynchronizeType: 2
+    Name: combo
+  - Type: 4
+    SynchronizeType: 2
+    Name: takehit
+  - Type: 4
+    SynchronizeType: 2
+    Name: dead
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+--- !u!114 &2308160431841979425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950659680525132397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!1 &950659680770403421
 GameObject:
   m_ObjectHideFlags: 0

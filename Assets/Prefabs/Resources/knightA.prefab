@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 4037913224329695192}
   - component: {fileID: 4037913224329695195}
   - component: {fileID: 3041632432732275971}
-  - component: {fileID: 1499547806176366614}
-  - component: {fileID: 6782975511681517983}
+  - component: {fileID: 1090680812703499305}
+  - component: {fileID: 1303028463073003980}
   m_Layer: 3
   m_Name: knightA
   m_TagString: Player
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f498adca4df113d495b5c22af543de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 0}
   player:
     HPplayer: 10
     domage: 1
@@ -171,7 +172,6 @@ MonoBehaviour:
     m_Bits: 0
   hpjoueur: {fileID: 0}
   healthBarTeamA: {fileID: 2700513884332775960, guid: 9a32dc2858b877c48bd0d8c648ff01c5, type: 3}
-  crouchKey: 306
   S: 115
   attaquehaut: 97
   attaquecoter: 101
@@ -214,11 +214,12 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 1499547806176366614}
+  - {fileID: 1090680812703499305}
+  - {fileID: 1303028463073003980}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1499547806176366614
+--- !u!114 &1090680812703499305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,14 +228,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 4037913224329695196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
---- !u!114 &6782975511681517983
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: Jump
+  - Type: 4
+    SynchronizeType: 2
+    Name: InTheAir
+  - Type: 4
+    SynchronizeType: 2
+    Name: Attaque haut
+  - Type: 4
+    SynchronizeType: 2
+    Name: attaque left
+  - Type: 4
+    SynchronizeType: 2
+    Name: Running
+  - Type: 4
+    SynchronizeType: 2
+    Name: takehit
+  - Type: 4
+    SynchronizeType: 2
+    Name: dead
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+--- !u!114 &1303028463073003980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,14 +267,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 4037913224329695196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2122fcfedeb645f4cbc9f97363faa0d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 4037913224329695196}
-  player2: {fileID: 30870315344102082, guid: 384f3a04ee74ff04c8dcb119520f7f6e, type: 3}
-  deadZone: {fileID: 4214277081809801340, guid: e7cbd425bc43f28458412181de02921b, type: 3}
-  timerObject: {fileID: 246964060308566353, guid: a7bde8bf607baed4ba001b85edfab8e1, type: 3}
-  timeLimit: 50
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!1 &4037913224594637474
 GameObject:
   m_ObjectHideFlags: 0

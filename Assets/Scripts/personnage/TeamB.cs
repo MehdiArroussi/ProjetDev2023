@@ -31,13 +31,17 @@ public class TeamB : charactee
     public KeyCode combo = KeyCode.R;
     public KeyCode combo2 = KeyCode.LeftShift;
 
+    
 
 
 
         private void Update()
         {
-        OnMove();
-        Attack();
+        if(view.IsMine) 
+        {
+            OnMove();
+            Attack();
+        }
     }
 
     void OnMove()

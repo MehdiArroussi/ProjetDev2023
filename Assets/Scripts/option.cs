@@ -10,7 +10,7 @@ public class option : MonoBehaviour
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private TMP_Dropdown resolutionDropDown;
     [SerializeField] private Toggle fullscreenToggle;
-    [SerializeField] private AudioMixer audioMixer; 
+
 
     private Resolution[] resolutions;
     private int currentResolutionID;
@@ -33,18 +33,15 @@ public class option : MonoBehaviour
         //Init les valeurs
         resolutionDropDown.value = currentResolutionID;
         fullscreenToggle.isOn = Screen.fullScreen;
-        audioMixer.GetFloat("Master", out float _volume);
-        volumeSlider.value = Mathf.InverseLerp(-80, 5f, _volume);
+
 
         //Link les events
-        volumeSlider.onValueChanged.AddListener(UpdateVolume);
         resolutionDropDown.onValueChanged.AddListener(UpdateResolution);
         fullscreenToggle.onValueChanged.AddListener(ToggleFullscren);
     }
 
     private void UpdateVolume(float _value)
     {
-        audioMixer.SetFloat("Master", Mathf.Lerp(-80, 5f, _value));
         print("Audio Mixer : " + _value);
     }
 

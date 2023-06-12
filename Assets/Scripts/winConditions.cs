@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -83,4 +83,4 @@ public class winConditions: MonoBehaviour
         Debug.Log(winningTeam + " wins!");
         isGameOver = true;
     }
-}*/
+}

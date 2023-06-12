@@ -12,8 +12,6 @@ public class MyLauncher : MonoBehaviourPunCallbacks
     public Text feedbackText;
     private byte maxPlayersPerRoom = 4;
    
-
-
     bool isConnecting;
 
     string gameVersion= "1";
